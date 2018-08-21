@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.4.RELEASE</version>
+	</parent>
+	<groupId>com.platflat</groupId>
+	<artifactId>platflat.register.center</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<!-- <properties> <jacoco.itReportPath>${project.basedir}/../platflat.register.center.inner/target/jacoco-it.exec</jacoco.itReportPath> <maven.compiler.source>1.8</maven.compiler.source> <maven.compiler.target>1.8</maven.compiler.target> <maven.compiler.testTarget>1.8</maven.compiler.testTarget> <maven.compiler.testSource>1.8</maven.compiler.testSource> </properties> <dependencies> <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> <scope>provided</scope> <optional>true</optional> </dependency> <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-api</artifactId> <scope>provided</scope> <optional>true</optional> </dependency> <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-api</artifactId> 
+		<scope>provided</scope> <optional>true</optional> </dependency> <dependency> <groupId>commons-logging</groupId> <artifactId>commons-logging</artifactId> <scope>provided</scope> <optional>true</optional> </dependency> <dependency> <groupId>org.apache.ant</groupId> <artifactId>ant</artifactId> <scope>provided</scope> <optional>true</optional> </dependency> <dependency> <groupId>org.junit.jupiter</groupId> <artifactId>junit-jupiter-api</artifactId> </dependency> <dependency> <groupId>org.junit.jupiter</groupId> <artifactId>junit-jupiter-params</artifactId> </dependency> <dependency> <groupId>org.junit.jupiter</groupId> <artifactId>junit-jupiter-engine</artifactId> </dependency> <dependency> <groupId>org.junit.platform</groupId> 
+		<artifactId>junit-platform-launcher</artifactId> </dependency> <dependency> <groupId>org.assertj</groupId> <artifactId>assertj-core</artifactId> </dependency> <dependency> <groupId>org.hsqldb</groupId> <artifactId>hsqldb</artifactId> <scope>test</scope> </dependency> <dependency> <groupId>com.github.javaparser</groupId> <artifactId>javaparser-core</artifactId> </dependency> </dependencies> <plugins> <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> </goals> <configuration> <destFile>${jacoco.itReportPath}</destFile> <propertyName>jacoco.agent.arg</propertyName> </configuration> </execution> </executions> 
+		</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> <configuration> <argLine>${jacoco.agent.arg} -Xmx1024m -XX:MaxPermSize=256m</argLine> </configuration> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-site-plugin</artifactId> <configuration> turn off be default, we'll turn it back on in the core project <skip>true</skip> </configuration> </plugin> need to allow snapshots so the maven plugin can be tested <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-enforcer-plugin</artifactId> <executions> <execution> <id>enforce-java</id> <phase>validate</phase> <goals> <goal>enforce</goal> </goals> <configuration> 
+		<rules> <requirePluginVersions> <banSnapshots>false</banSnapshots> </requirePluginVersions> </rules> </configuration> </execution> </executions> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> <configuration> <tags> <tag> <name>mbg.generated</name> <placement>X</placement> </tag> </tags> </configuration> </plugin> <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>animal-sniffer-maven-plugin</artifactId> <configuration> <signature> <groupId>org.codehaus.mojo.signature</groupId> <artifactId>java18</artifactId> <version>1.0</version> </signature> </configuration> </plugin> </plugins> -->
+	<modules>
+		<module>platflat.register.center.inner</module>
+	</modules>
+</project>
