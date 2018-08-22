@@ -10,87 +10,76 @@
 	<name>register.center.inner</name>
 	<description>platflat.register.center.inner</description>
 	<properties>
-		<!-- <spring.boot.version>1.4.5.RELEASE</spring.boot.version> -->
 		<jacoco.itReportPath>${project.basedir}/../platflat.register.center.inner/target/jacoco-it.exec</jacoco.itReportPath>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.testTarget>1.8</maven.compiler.testTarget>
-		<maven.compiler.testSource>1.8</maven.compiler.testSource>
+		<maven.compiler.source>${jdkVersion}</maven.compiler.source>
+		<maven.compiler.target>${jdkVersion}</maven.compiler.target>
+		<maven.compiler.testTarget>${jdkVersion}</maven.compiler.testTarget>
+		<maven.compiler.testSource>${jdkVersion}</maven.compiler.testSource>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
+		<maven.compiler.encoding>${enCode}</maven.compiler.encoding>
 	</properties>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>${nexusHomeSnapshots}</id>
+			<name>${nexusHomeSnapshots}</name>
+			<url>${nexusUrl}/${nexusHomeSnapshots}/</url>
+		</snapshotRepository>
+		<repository>
+			<id>${nexusHomeRelease}</id>
+			<name>${nexusHomeRelease}</name>
+			<url>${nexusUrl}/${nexusHomeRelease}</url>
+		</repository>
+	</distributionManagement>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
-				<version>2.0.4.RELEASE</version>
+				<version>${springBootVersion}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
-	<repositories>
-		<repository>
-			<id>maven-snapshots</id>
-			<name>maven-snapshots</name>
-			<url>http://127.0.0.1:18081/repository/maven-snapshots/</url>
-		</repository>
-	</repositories>
-
-
-
 	<dependencies>
-		<!-- <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> <version>3.8.1</version> <scope>test</scope> </dependency> -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 
 		</dependency>
-
-		<!-- spring-boot-devtools依赖包 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 			<scope>true</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.1.3</version>
 		</dependency>
-
-		<!-- mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.2.44</version>
 		</dependency>
-
-		<!-- spring-data-jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
 		<!-- spring热部署 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>springloaded</artifactId>
 			<version>1.2.6.RELEASE</version>
 		</dependency>
-		<!-- mybatis plus会维护好mybatis，不需要引入 -->
 		<!-- <dependency> <groupId>org.mybatis</groupId> <artifactId>mybatis</artifactId> <version>3.4.6</version> </dependency> -->
 
 		<dependency>
@@ -98,35 +87,24 @@
 			<artifactId>mybatisplus-spring-boot-starter</artifactId>
 			<version>1.0.5</version>
 		</dependency>
-		<!-- mybatis plus -->
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus</artifactId>
 			<version>2.2.0</version>
 		</dependency>
-		<!-- junit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
-			<version>2.10.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-ehcache</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		<!-- java.lang.ClassNotFoundException: javax.xml.bind.JAXBException -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
-			<version>2.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
@@ -143,8 +121,6 @@
 			<artifactId>activation</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity -->
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
@@ -158,13 +134,20 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<configuration>
+					<source>${jdkVersion}</source>
+					<target>${jdkVersion}</target>
+					<encoding>${enCode}</encoding>
 					<skip>false</skip>
 				</configuration>
 			</plugin>
-			<!-- create the Source JAR and JavaDoc a bit earlier so it is ready for the assembly -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<encoding>${enCode}</encoding>
+					<source>${jdkVersion}</source>
+					<target>${jdkVersion}</target>
+				</configuration>
 				<executions>
 					<execution>
 						<phase>prepare-package</phase>
@@ -174,22 +157,26 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin> -->
+				<configuration>
+					<argLine>-Dfile.encoding=UTF-8</argLine>
+					<source>${jdkVersion}</source>
+					<target>${jdkVersion}</target>
+					<aggregate>true</aggregate>
+					<charset>${enCode}</charset>
+					<encoding>${enCode}</encoding>
+					<docencoding>${enCode}</docencoding>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
+					<encoding>${enCode}</encoding>
+					<source>${jdkVersion}</source>
+					<target>${jdkVersion}</target>
 					<archive>
 						<manifest>
 							<mainClass>org.mybatis.generator.api.ShellRunner</mainClass>
@@ -201,6 +188,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
+					<source>${jdkVersion}</source>
+					<target>${jdkVersion}</target>
+					<encoding>${enCode}</encoding>
 					<descriptors>
 						<descriptor>${project.basedir}/src/main/assembly/src.xml</descriptor>
 					</descriptors>
@@ -217,11 +207,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
-	<!-- <build> <plugins> <plugin> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-maven-plugin</artifactId> <configuration> <source>1.10</source> <target>1.10</target> <fork>true</fork> </configuration> <executions> <execution> <goals> <goal>repackage</goal> </goals> <configuration> <classifier>exec</classifier> </configuration> </execution> </executions> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-site-plugin</artifactId> <configuration> <skip>false</skip> </configuration> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-source-plugin</artifactId> <executions> <execution> <phase>prepare-package</phase> <goals> <goal>jar-no-fork</goal> 
-		</goals> </execution> </executions> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> <executions> <execution> <phase>prepare-package</phase> <goals> <goal>jar</goal> </goals> </execution> </executions> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jar-plugin</artifactId> <configuration> <archive> <manifest> <mainClass>platflat.register.center.inner.inner.RegistrCenterApp</mainClass> </manifest> </archive> </configuration> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-assembly-plugin</artifactId> <configuration> <descriptors> <descriptor>${project.basedir}/src/main/assembly/src.xml</descriptor> 
-		</descriptors> </configuration> <executions> <execution> <id>bundle</id> <goals> <goal>single</goal> </goals> <phase>package</phase> </execution> </executions> </plugin> </plugins> </build> -->
-
-
 </project>
