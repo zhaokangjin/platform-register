@@ -1,14 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- <parent> <groupId>com.platflat</groupId> <artifactId>platflat.register.center</artifactId> <version>0.0.1-SNAPSHOT</version> </parent> -->
 	<parent>
 		<groupId>com.platflat</groupId>
 		<artifactId>platflat.register.center</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>platflat.register.center.inner</artifactId>
-	<name>register.center.inner</name>
-	<description>platflat.register.center.inner</description>
+	<artifactId>platflat.register.center.business</artifactId>
+	<name>business</name>
+	<description>business</description>
 	<properties>
 		<jacoco.itReportPath>${project.basedir}/../platflat.register.center.inner/target/jacoco-it.exec</jacoco.itReportPath>
 		<maven.compiler.source>${jdkVersion}</maven.compiler.source>

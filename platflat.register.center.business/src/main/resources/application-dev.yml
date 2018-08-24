@@ -1,0 +1,5 @@
+system:
+ oracleConnection:
+  url:127.0.0.1
+  port:1521
+  password:23990308
